@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/DalyChouikh/gin-articles/internal/server"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,8 +18,7 @@ func showIndexPage(c *gin.Context) {
 }
 
 func main() {
-	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
-	router.GET("/", showIndexPage)
+	router := server.SetupRouter()
+	server.RegisterRoutes(router)
 	router.Run(":8080")
 }
