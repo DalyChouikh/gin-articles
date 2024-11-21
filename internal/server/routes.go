@@ -15,4 +15,5 @@ func SetupRouter() *gin.Engine {
 
 func RegisterRoutes(r *gin.Engine) {
 	r.GET("/", api.ShowIndexPage)
+	r.GET("/article/view/:article_id", api.GetArticle)
 }
