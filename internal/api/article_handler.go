@@ -5,19 +5,16 @@ import (
 	"strconv"
 
 	"github.com/DalyChouikh/gin-articles/internal/models"
+	"github.com/DalyChouikh/gin-articles/internal/utils"
 	"github.com/gin-gonic/gin"
 )
 
 func ShowIndexPage(c *gin.Context) {
 	articles := models.GetAllArticles()
-	c.HTML(
-		http.StatusOK,
-		"index.html",
-		gin.H{
-			"title":   "Home Page",
-			"payload": articles,
-		},
-	)
+	utils.Render(c, gin.H{
+		"title":   "Home Page",
+		"payload": articles,
+	}, "index.html")
 }
 
 func GetArticle(c *gin.Context) {
